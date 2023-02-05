@@ -10,7 +10,7 @@ function App() {
   }
 
   useEffect(() => {
-    const copyButton = document.querySelector('.copybutton');
+    const copyButton = document.querySelector('.copy-button');
     if (copyButton) {
       copyButton.addEventListener('click', async () => {
         try {
@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <div className="text-container">
         <span>This is </span>
-        <a className='copy-button' onClick={handleClick}>a string you can copy</a>
+        <span className='copy-button' onClick={handleClick}>a string you can copy</span>
         <p className='copy-popup'>{message}</p>
       </div>
     </div>
