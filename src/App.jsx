@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
 
-  const [message, setMessage] = useState('Click to copy');
+  const [message, setMessage] = useState('');
   const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef();
   
@@ -12,13 +12,22 @@ function App() {
     try {
       navigator.clipboard.writeText(btnVal);
       setMessage('✓ Copied to clipboard');
-      onMouseEnter();
+      onClickAgain();
     } catch (err) {
       console.error('Could not write to clipboard', err);
     }
   }
 
   function onMouseEnter() {
+    clearTimeout(timeoutRef.current);
+    setMessage('Click to copy');
+    setIsHovered(true);
+    timeoutRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 3000);
+  }
+
+  function onClickAgain() {
     clearTimeout(timeoutRef.current);
     setIsHovered(true);
     timeoutRef.current = setTimeout(() => {
