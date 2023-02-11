@@ -1,31 +1,59 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5rem;
   text-align: center;
 }
 
 .text-container {
   color: #888;
   position: relative;
+  width: 500px;
 }
 
-.copy-button {
+/* .copy-button {
   border-bottom: 3px dotted #646cffaa;
   text-decoration: none;
   cursor: pointer;
 }
 
-.copy-popup {
-  position: absolute;
-  bottom: 10px;
-  right: -20px;
-  border: 1px solid white;
-  padding: 2px;
-  display: none;
-}
+
 
 .copy-button:hover + .copy-popup {
   display: block;
+} */
+
+.copy-button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  border-bottom: 3px dotted #646cffaa;
+  cursor: pointer;
 }
 
+/* .copy-popup {
+  position: absolute;
+  top: -23px;
+  left: 100px;
+  border: 1px solid white;
+  padding: 0px 5px 0px 5px;
+  min-width: 100px;
+  width: 200px;
+} */
+
+.copy-popup {
+  position: absolute;
+  bottom: 25px;
+  left: 300px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0px 5px 0px 5px;
+  background-color: white;
+  color: black;
+}
+
+span, .copy-button {
+  font-size: 1.15rem;
+}

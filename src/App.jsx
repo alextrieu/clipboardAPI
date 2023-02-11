@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './App.css'
 
 function App() {
 
   const [message, setMessage] = useState('Click to copy');
+  const [isHovered, setIsHovered] = useState(false);
+  const timeoutRef = useRef();
   
-  function handleClick() {
-    setMessage('✓ Copied to clipboard');
+  function handleClick(e) {
+    const btnVal = e.target.value;
+    try {
+      navigator.clipboard.writeText(btnVal);
+      setMessage('✓ Copied to clipboard');
+      onMouseEnter();
+    } catch (err) {
+      console.error('Could not write to clipboard', err);
+    }
   }
 
-  useEffect(() => {
-    const copyButton = document.querySelector('.copy-button');
-    if (copyButton) {
-      copyButton.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(copyButton.innerHTML);
-        } catch (err) {
-          console.error('Could not write to clipboard', err);
-        }
-      });
-    }
+  function onMouseEnter() {
+    clearTimeout(timeoutRef.current);
+    setIsHovered(true);
+    timeoutRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 3000);
+  }
 
-    return () => {
-      if (copyButton) {
-        copyButton.removeEventListener('click', async () => {});
-      }
-    };
-  }, []);
-
-
+  function onMouseLeave() {
+    clearTimeout(timeoutRef.current);
+    setIsHovered(false);
+    timeoutRef.current = setTimeout(() => {
+      setMessage('');
+    }, 3000);
+  }
   
 
   return (
     <div className="App">
       <div className="text-container">
         <span>This is </span>
-        <span className='copy-button' onClick={handleClick}>a string you can copy</span>
-        <p className='copy-popup'>{message}</p>
+        <button className='copy-button' value ="a string you can copy" onClick={handleClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>a string you can copy</button>
+        {isHovered ? <span className={`copy-popup animate__animated animate__heartBeat`}>{message}</span> : (message !== '' ? <span className={`copy-popup animate__animated animate__fadeOut`}>{message}</span> : null)}
       </div>
     </div>
   )
