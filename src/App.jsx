@@ -18,7 +18,7 @@ function App() {
     }
   }
 
-  function onMouseEnter() {
+  function onInteract() {
     clearTimeout(timeoutRef.current);
     setMessage('Click to copy');
     setIsHovered(true);
@@ -48,7 +48,7 @@ function App() {
     <div className="App">
       <div className="text-container">
         <span>This is </span>
-        <button className='copy-button' value ="a string you can copy" onClick={handleClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>a string you can copy</button>
+        <button className='copy-button' value ="a string you can copy" onClick={handleClick} onMouseEnter={onInteract} onTouchStart={onInteract} onMouseLeave={onMouseLeave} >a string you can copy</button>
         {isHovered ? <span className={`copy-popup animate__animated animate__heartBeat`}>{message}</span> : (message !== '' ? <span className={`copy-popup animate__animated animate__fadeOut`}>{message}</span> : null)}
       </div>
     </div>
