@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  width: 80%;
   margin: 0 auto;
   padding: 5rem;
   text-align: center;
@@ -8,7 +9,9 @@
 .text-container {
   color: #888;
   position: relative;
-  width: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 80%;
 }
 
 /* .copy-button {
