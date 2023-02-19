@@ -50,7 +50,7 @@ Ensure [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) are i
 1. Clone or Download the repository (Depending on whether you are using SSH or HTTPS)
 ```
 git clone git@github.com:alextrieu/clipboardAPI.git
-cd weather
+cd clipboardAPI
 ```
 2. Install dependencies
 ```
